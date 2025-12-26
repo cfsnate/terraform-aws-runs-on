@@ -228,6 +228,9 @@ module "core" {
   app_alarm_daily_minutes                    = var.app_alarm_daily_minutes
   sqs_queue_oldest_message_threshold_seconds = var.sqs_queue_oldest_message_threshold_seconds
 
+  # Extra environment variables
+  extra_env_vars = var.extra_env_vars
+
   tags = local.common_tags
 
   # Ensure NAT gateway is ready before App Runner starts

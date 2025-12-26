@@ -249,6 +249,32 @@ module "runs-on" {
 }
 ```
 
+### Custom Environment Variables
+
+Pass additional environment variables to the AppRunner container:
+
+```hcl
+module "runs-on" {
+  source  = "runs-on/runs-on/aws"
+  version = "v2.11.0"
+
+  github_organization = "my-org"
+  license_key         = "your-license-key"
+  email               = "alerts@example.com"
+
+  vpc_id            = "vpc-xxxxxxxx"
+  public_subnet_ids = ["subnet-pub1", "subnet-pub2", "subnet-pub3"]
+
+  # Additional environment variables for custom configuration
+  extra_env_vars = {
+    CUSTOM_FEATURE_FLAG = "enabled"
+    CUSTOM_API_ENDPOINT = "https://api.example.com"
+    CUSTOM_TIMEOUT      = "300"
+  }
+}
+```
+
+
 ### Full Featured
 
 All features enabled together, with VPC endpoints for improved security and reduced data transfer costs:

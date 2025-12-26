@@ -95,5 +95,12 @@ module "runs_on" {
   # Resource protection
   prevent_destroy_optional_resources = var.prevent_destroy_optional_resources
 
+  # Optional: Pass additional environment variables to the AppRunner container
+  # These can be used for custom feature flags, API endpoints, or other configuration
+  # extra_env_vars = {
+  #   CUSTOM_FEATURE_FLAG = "enabled"
+  #   CUSTOM_API_ENDPOINT = "https://api.example.com"
+  # }
+
   # All other settings use smart defaults from CloudFormation
 }

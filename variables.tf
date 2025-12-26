@@ -488,3 +488,14 @@ variable "force_delete_ecr" {
   type        = bool
   default     = false
 }
+
+###########################
+# Extra Environment Variables
+# Used by: core module
+###########################
+
+variable "extra_env_vars" {
+  description = "Additional non-sensitive environment variables to pass to the AppRunner container (e.g., custom feature flags, API endpoints)"
+  type        = map(string)
+  default     = {}
+}

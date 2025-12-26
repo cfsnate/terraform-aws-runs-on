@@ -321,3 +321,9 @@ variable "enable_dashboard" {
   type        = bool
   default     = true
 }
+
+variable "extra_env_vars" {
+  description = "Additional non-sensitive environment variables to pass to the AppRunner container"
+  type        = map(string)
+  default     = {}
+}

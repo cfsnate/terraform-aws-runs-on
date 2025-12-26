@@ -85,7 +85,10 @@ locals {
   }
 
   # AWS App Runner doesn't store empty env vars, causing drift on every plan
-  base_env_vars = { for k, v in local.all_env_vars : k => v if v != "" }
+  base_env_vars = merge(
+    { for k, v in local.all_env_vars : k => v if v != "" },
+    { for k, v in var.extra_env_vars : k => v if v != "" }
+  )
 
   # App Runner log group name for CloudWatch dashboard queries
   apprunner_log_group_name = "/aws/apprunner/${aws_apprunner_service.this.service_name}/${aws_apprunner_service.this.service_id}/application"
